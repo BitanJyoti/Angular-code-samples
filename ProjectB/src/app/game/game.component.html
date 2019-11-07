@@ -1,0 +1,9 @@
+<div class="col-md-3 float-left">
+    <div class="col-md-12 card card-body" *ngFor="let game of games">
+        <img src="{{game.image}}" class="card-img-top" (click)="sendGame(game)">
+        <h4 class="text-center">{{game.brand}}</h4>
+    </div>
+</div>
+<app-game-details [gameDetails]="selectedGame"></app-game-details>
+
+

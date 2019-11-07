@@ -1,0 +1,32 @@
+<div class="col-md-4 offset-md-4 mt-5 card card-body">
+    <form [formGroup]="ProductForm" (ngSubmit)="submitForm(ProductForm)">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Product Name
+
+                </span>
+            </div>
+            <input type="text" name="name" class="form-control"
+            form-controlName='name'>
+        </div>
+        <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image URL
+    
+                    </span>
+                </div>
+                <input type="text" name="image" class="form-control" formControlName='image'>
+            </div>
+            <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Product Price
+        
+                        </span>
+                    </div>
+                    <input type="number" name="price" class="form-control"
+                    fromContromName='price'>
+                </div>
+                <button class="btn btn-outline-primary float-right"
+                [disabled]="productForm.invalid">Submit</button>
+    </form>
+</div>

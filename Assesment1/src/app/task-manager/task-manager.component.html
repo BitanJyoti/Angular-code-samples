@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="col-md-4 offset-md-4 mt-5 card card-body">
+        <h4 class="text-center"> Add Users</h4>
+    
+        <div class="spinner-border text-success m-auto" role="status" *ngIf="isLoading">
+                <span class="sr-only">Loading...</span>
+        </div>
+        <form #addUserForm='ngForm' (ngSubmit) ="addUser(addUserForm)" *ngIf="!isLoading">
+        <input type="text" name="name" class="form-control mb-3" #name='ngModel' ngModel placeholder="Enter Name">
+        <input type="text" name="imgurl" class="form-control mb-3" #imgurl='ngModel' ngModel placeholder="Enter Image URL">
+        
+        <input type="text" name="description" class="form-control mb-3" #description='ngModel' ngModel placeholder="Enter Description">
+        <div class="btn-group">
+            <button type="reset" class="btn btn-outline-dark">Reset</button>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </div>
+        </form>
+    </div>
+    
+    <div class="card card-body col-md-3 float-left mt-5 "  *ngFor="let task of taskService.tasks">
+        <img src="{{task.imgurl}}" class="card-img-top" height="220px">
+        <h4 class="text-center">{{task.name}}</h4>
+        
+        <p>{{task.description}}</p>
+        <div class="btn-group">
+            
+            <button type="button" class="btn btn-outline-warning" 
+            data-toggle="modal" data-target="#exampleModal"
+            (click)='selectTask(task)'>
+                Update
+            </button>
+          
+         
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Update Task</h5>
+                  <button type="button" class="close" (click)="callGetData()"
+                  data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form #updateTaskForm='ngForm'
+                    (ngSubmit)="updateTask(updateTaskForm)">
+                        <input type="hidden" name="id" #id="ngModel"
+                        [(ngModel)]= 'selectedTask.id'>
+                        
+                        <label for="name">Name</label>
+                        <input type="text" name="name" #name='ngModel' 
+                        [(ngModel)]= 'selectedTask.name'
+                        class="form-control mb-3" placeholder="Enter Product Name...">
+                        
+                        <label for="imgurl">Image URL</label>
+                        <input type="text" name="imgurl" #imgurl='ngModel' 
+                        [(ngModel)]= 'selectedTask.imgurl'
+                        class="form-control mb-3" placeholder="Enter Image URL...">
+                        
+                        
+                        <label for="description">Description</label>
+                        <input type="text" name="description" #description='ngModel' 
+                        [(ngModel)]= 'selectedTask.description'
+                        class="form-control mb-3" placeholder="Enter Description...">
+                        
+                        <div class="btn-group float-right">
+                            <button type="reset" class="btn btn-outline-dark">Reset</button>
+                            <button type="submit" class="btn btn-outline-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+            <button class="btn btn-outline-danger" (click)="deleteTask(task)"
+            >Delete</button>
+        </div>
+    </div>
+    </div>
+    
+    
+    

@@ -1,0 +1,11 @@
+<h1 [class.bg-success]="flag" [class.bg-danger]="!flag">{{name}}</h1>
+<img [src]="imgURL" alt="">
+<p [style.background]="flag ? 'teal' : 'yellow'">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, harum vel sed at aliquid dolorem. Nobis odit ut porro, voluptatem atque laboriosam enim placeat quisquam voluptas aut unde temporibus iusto.</p>
+<!--
+    template reference variable and event binding
+    <input type="text" #inputOne>
+<button (click)="printInput(inputOne.value)" class="btn btn-success">Yo!</button> -->
+
+<input type="text"[(ngModel)]="search">
+<h1>{{search}}</h1>
+<button class = "btn btn-success" (click)="printSearch(search)">Enjoy</button>

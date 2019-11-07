@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userService.users">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phno}}</td>
+                <td>
+                    <button class="btn-outline-danger" (click)="deleteUser(user)"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

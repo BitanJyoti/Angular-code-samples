@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="card card-body col-md-3 float-left mt-5" *ngFor="let task of taskService.tasks">
+        <img src="{{task.imgurl}}" class="card-img-top" height="220px">
+        <h4 class="text-center">{{task.name}}</h4>
+
+        <p>{{task.description}}</p>
+    </div>
+</div>

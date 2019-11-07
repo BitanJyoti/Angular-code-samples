@@ -1,0 +1,41 @@
+<div *ngIf="users.length===0">No Users found</div>
+<div class="container mt-4" *ngIf="users.length > 0">
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; index as i">
+                <td>{{i+1}}</td>
+                <td>
+                    <p [ngClass]="{'text-danger': user.name.includes('s'),
+                               'bg-success': user.name.includes('s')}">
+                    
+                    {{user.name}}
+                </p>
+            </td>
+                <td>{{user.email}}</td>
+                <td>{{user.mobile}}</td>
+                <td>
+                    <button [ngClass]='classes'
+                    (click)='deleteUser(user)'>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div [ngSwitch]='color'>
+    <p *ngSwitchCase="'red'">Red Block</p>
+    <p *ngSwitchCase="'blue'">Blue Block</p>
+    <p *ngSwitchCase="'gree'">Green Block</p>
+    <p *ngSwitchCase="'Black'">Black Block</p>
+    <p *ngSwitchDefault>Default Block</p>
+
+</div>
+<h5 appCustom> Custom Directive</h5>

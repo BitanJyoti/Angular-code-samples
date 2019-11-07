@@ -1,0 +1,48 @@
+<!-- template driven from -->
+<div class="col-md-4 offset-md-4 card card-body mt-5">
+    <h4 class="text-center">Please Login!!!</h4>
+    <form #f = "ngForm" (ngSubmit)="submitForm(form)">
+        <div class="form-group">
+            <label for="name">Enter your name:</label>
+            <input type="text" name="name" #name='ngModel' ngModel
+            class="form-control" required minlength="3">
+            <div *ngIf="name.invalid && name.touched">
+                <p &ngIf="name.errors.required" class="alert alert-danger">
+                    This field is mendatory
+                 </p>
+                <p *ngIf="name.errors.required" class="alert alert-danger">
+                    This filed accepts minimum 3 characters
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+                <label for="email">Enter your email:</label>
+                <input type="text" name="email" #email='ngModel' ngModel
+                 class="form-control" minlength="8" email>
+                 <div *ngIf="email.invalid && name.touched">
+                        <p &ngIf="email.errors.required" class="alert alert-danger">
+                            This field is mendatory
+                         </p>
+                        <p *ngIf="email.errors.required" class="alert alert-danger">
+                            This filed accepts minimum 3 characters
+                        </p>
+                    </div>
+            </div>
+            <div class="form-group">
+                    <label for="phno">Enter your PhoneNumber:</label>
+                    <input type="tel" name="phno" #phno='ngModel' ngModel
+                     class="form-control" required minlength="10">
+                     <div *ngIf="phno.invalid && phno.touched">
+                            <p &ngIf="phno.errors.required" class="alert alert-danger">
+                                This field is mendatory
+                             </p>
+                            <p *ngIf="phno.errors.required" class="alert alert-danger">
+                                This filed accepts minimum 3 characters
+                            </p>
+                        </div>
+                </div>
+                <button type="=submit" [disabled]='f.invalid'
+                 class="btn btn-outline-primary float-right">Submit</button>
+    </form>
+
+</div>
